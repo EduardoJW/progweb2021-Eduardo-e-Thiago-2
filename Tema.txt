@@ -1,0 +1,8 @@
+O Tema do trabalho é a criação de um site que é principalmente uma ferramenta de criação e coleção de cartas para um jogo de cartas virtual. 
+O principal uso é puxar os templates, adicionar imagens e salvar as cartas prontas, com o texto editado e então
+poder salvar o arquivo da carta ou enviar e registrar a carta na base de dados.
+Esse sistema inclui todas as operações que vimos em aula e além de ser uma ferramenta útil para mim é uma boa aplicação dos conhecimentos.
+
+Integrantes: 
+-Eduardo Junqueira Wichrowski -1710329
+-Thiago Avidos Valle Pereira - 1611116
