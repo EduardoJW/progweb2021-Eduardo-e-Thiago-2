@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cartas criadas</title>
+</head>
+<body>
+    {% include 'CardMakerApp/links.html' %} 
+    <table>
+        
+        <tr><th>Nome - </th><th>Poder de Ataque - </th><th>Raça - </th><th>Efeito - </th><th>Tipo - </th><th>Classe - </th><th>Ações disponíveis </th></tr>
+        {% for carta in cartas %}
+            <tr>
+                <td width = "100px">{{ carta.nome }}</td>
+                <td width = "100px">{{ carta.poder }}</td>
+                <td width = "100px">{{ carta.raca }}</td>
+                <td width = "100px">{{ carta.efeito }}</td>
+                <td width = "100px">{{ carta.tipo }}</td>
+                <td width = "100px">{{ carta.classe }}</td>
+                <td width = "100px">
+                    <a href = "{% url 'CardMakerApp:atualiza-carta' pk=carta.id %}"> Atualizar </a>
+                     |
+                     <a href = "{% url 'CardMakerApp:deleta-carta' pk=carta.id %}">  Excluir </a>
+                    </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7">Sem Cartas (ainda)</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+</body>
+</html>

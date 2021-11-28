@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifique os dados antes de deletar</title>
+</head>
+<body>
+    {% include 'CardMakerApp/links.html' %}
+    <h1>Verifique os Dados</h1>
+    <p>Confira atentamente os dados antes de deletar a carta</p>
+    <form method="post">
+        {% csrf_token %}
+        Confirme que você quer remover {{ carta.nome }}:
+        <input type='submit' value='Confirmar'>
+
+    </form>
+    
+</body>
+</html>
