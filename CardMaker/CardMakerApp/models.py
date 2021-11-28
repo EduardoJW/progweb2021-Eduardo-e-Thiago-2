@@ -41,6 +41,7 @@ class Carta(models.Model):
     efeito = models.CharField(max_length=100, help_text='Digite o efeito da carta')
     tipo = models.CharField(max_length=100, choices = TIPO, help_text='Escolha o tipo')
     classe = models.CharField(max_length=100, choices = CLASSE, help_text='Escolha a classe')
+    usuario = models.CharField(max_length=100, help_text='Usuário')
 
     def __str__(self):
         return self.nome + ' / ' + str(self.poder) + ' / ' + self.tipo + " " + self.classe

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserModel
 from CardMakerApp.forms import CardModel2Form
 from django.views.generic.base import View
 from CardMakerApp.models import Carta
@@ -50,12 +50,15 @@ class listCards(View):
 class createCard(View):
     def get(self, request, *args, **kwargs):
         context = {'formulario': CardModel2Form, }
+        current_user = request.user.username
         return render(request, "CardMakerApp/createCard.html", context)
 
     def post(self, request, *args, **kwargs):
         formulario = CardModel2Form(request.POST)
+        current_user = request.user.username
         if formulario.is_valid():
             carta = formulario.save()
+            carta.usuario = current_user            
             carta.save()
             return HttpResponseRedirect(reverse_lazy("CardMakerApp:lista-cartas"))
         pass

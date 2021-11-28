@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','card-maker-app.herokuapp.com']
 
-
+CONTA_CARTAS = 0
 # Application definition
 
 INSTALLED_APPS = [

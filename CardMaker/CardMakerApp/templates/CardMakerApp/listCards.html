@@ -11,27 +11,41 @@
     {% include 'CardMakerApp/links.html' %} 
     <table>
         
+        
+        {% if user.is_authenticated %}
         <tr><th>Nome - </th><th>Poder de Ataque - </th><th>Raça - </th><th>Efeito - </th><th>Tipo - </th><th>Classe - </th><th>Ações disponíveis </th></tr>
-        {% for carta in cartas %}
-            <tr>
-                <td width = "100px">{{ carta.nome }}</td>
-                <td width = "100px">{{ carta.poder }}</td>
-                <td width = "100px">{{ carta.raca }}</td>
-                <td width = "100px">{{ carta.efeito }}</td>
-                <td width = "100px">{{ carta.tipo }}</td>
-                <td width = "100px">{{ carta.classe }}</td>
-                <td width = "100px">
-                    <a href = "{% url 'CardMakerApp:atualiza-carta' pk=carta.id %}"> Atualizar </a>
-                     |
-                     <a href = "{% url 'CardMakerApp:deleta-carta' pk=carta.id %}">  Excluir </a>
-                    </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="7">Sem Cartas (ainda)</td>
-            </tr>
-        {% endfor %}
+            {% for carta in cartas %}
+                {% if carta.usuario == request.user.username %}
+                <tr>
+                    <td width = "100px">{{ carta.nome }}</td>
+                    <td width = "100px">{{ carta.poder }}</td>
+                    <td width = "100px">{{ carta.raca }}</td>
+                    <td width = "100px">{{ carta.efeito }}</td>
+                    <td width = "100px">{{ carta.tipo }}</td>
+                    <td width = "100px">{{ carta.classe }}</td>
+                    <td width = "100px">
+                        <a href = "{% url 'CardMakerApp:atualiza-carta' pk=carta.id %}"> Atualizar </a>
+                        |
+                        <a href = "{% url 'CardMakerApp:deleta-carta' pk=carta.id %}">  Excluir </a>
+                        </td>
+                </tr>
+                
+                {% endif %}
+                
+            {% empty %}
 
+                <tr>
+                    <td colspan="7">Sem Cartas (ainda)</td>
+                </tr>
+            
+            {% endfor %}
+        {% else %}
+            <p>Faça o login ou crie uma conta antes de prosseguir:</p>
+            <a href = "{% url 'login' %}">Fazer login </a>
+            -
+            <a href = "{% url 'register' %}">Registre-se </a>
+
+        {% endif %}
 
     </table>
 </body>

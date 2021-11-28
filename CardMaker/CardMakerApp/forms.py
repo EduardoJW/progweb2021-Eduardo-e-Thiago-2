@@ -5,6 +5,6 @@ from CardMakerApp.models import Carta
 class CardModel2Form(forms.ModelForm):
     class Meta:
         model = Carta
-        fields = '__all__'
+        fields = ['nome','poder','raca','efeito','tipo','classe']
 
 
