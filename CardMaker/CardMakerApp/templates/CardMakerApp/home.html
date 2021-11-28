@@ -13,9 +13,17 @@
 
 </head>
 <body>
-    <h1>Crie sua carta aqui</h1>
-    <p>Faça o login antes de prosseguir:</p>
-    <a href = "{% url 'login' %}">Fazer login</a>
+    <h1>Card Maker</h1>
+    {% if not user.is_authenticated %}
+        <p>Faça o login ou crie uma conta antes de prosseguir:</p>
+        <a href = "{% url 'login' %}">Fazer login </a>
+        -
+        <a href = "{% url 'register' %}">Registre-se </a>
+    {% else %}
+        <a href = "{% url 'CardMakerApp:cria-carta' %}">Criar Carta</a>
+        -
+        <a href = "{% url 'CardMakerApp:lista-cartas' %}">Lista de Cartas</a>
+    {% endif %}
 
     <!-- <p><img src = "{% static 'img/python.png' %}"></p> -->
 

@@ -1,0 +1,23 @@
+{% extends 'registro/base.html' %}
+
+<!-- Titulo da pagina-->
+{% block titulo %}Login do Usuário{% endblock %}
+
+<!--Conteudo da pagina-->
+{% block conteudo%}
+<h2>Login do usuário</h2>
+<p>
+    Atenção: Este site NÂO é seguro porque não usa HTTPS!
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type = "submit" value = Login>
+
+
+</form>
+
+{% endblock %}

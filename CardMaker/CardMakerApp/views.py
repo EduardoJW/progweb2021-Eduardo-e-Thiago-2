@@ -28,7 +28,14 @@ def register(request):
     else:
         formulario = UserCreationForm()
     contexto = {'formulario': formulario, }
-    return render(request, 'CardMakerApp/register.html', contexto)
+    #return render(request, 'CardMakerApp/register.html', contexto)
+    return render(request, 'registro/register.html', contexto)
+
+def homeSec(request):
+    return render(request, 'registro/homeSec.html')
+
+def userProfile(request):
+    return render(request, 'registro/userProfile.html')
 
 #Lista todas as cartas
 class listCards(View):
